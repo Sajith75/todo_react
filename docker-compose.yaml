@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx
+    ports:
+    - target: 80
+      published: 80
+    volumes:
+    - type: bind
+      source: ../nginx.conf
+      target: /etc/nginx/nginx.conf
+    depends_on:
+    - api
+    - react
+  react:
+    image: reactapp
+    build: .
+  db:
+    image: mysql:5.7
+    environment:
+    - MYSQL_ROOT_PASSWORD=${PASS}
+    - MYSQL_DATABASE=todo
+  api:
+    image: springapp
+    depends_on:
+    - db

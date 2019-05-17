@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   addTask(){
-    axios.post('http://localhost:8383/api/v2/todolist/task', this.state.newTaskData).then((response) =>{
+    axios.post('/api/v2/todolist/task', this.state.newTaskData).then((response) =>{
       let { todos } = this.state;
 
       todos.push(response.data)
@@ -53,7 +53,7 @@ class App extends Component {
   updateTask(){
     let { id, name, description} = this.state.editTaskData;
 
-    axios.put('http://localhost:8383/api/v2/todolist/' + this.state.editTaskData.id, { id, name, description }).then((response) => {
+    axios.put('/api/v2/todolist/' + this.state.editTaskData.id, { id, name, description }).then((response) => {
       console.log(response.data);
       this._refreshTasks();
 
@@ -64,13 +64,13 @@ class App extends Component {
   }
 
   deleteTask(id){
-    axios.delete('http://localhost:8383/api/v2/todolist/' + id).then((response) => {
+    axios.delete('/api/v2/todolist/' + id).then((response) => {
       this._refreshTasks();
     });
   }
 
   _refreshTasks(){
-    axios.get('http://localhost:8383/api/v2/todolist/list').then((response) => {
+    axios.get('/api/v2/todolist/list').then((response) => {
       this.setState({
         todos: response.data
       })

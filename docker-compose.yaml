@@ -1,14 +1,10 @@
 version: '3.7'
 services:
   nginx:
-    image: nginx
+    image: sajith75/nginx:latest
     ports:
     - target: 80
       published: 80
-    volumes:
-    - type: bind
-      source: nginx.conf
-      target: /etc/nginx/nginx.conf
     depends_on:
     - api
     - react

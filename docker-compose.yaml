@@ -16,5 +16,6 @@ services:
     - MYSQL_ROOT_PASSWORD=${PASS}
     - MYSQL_DATABASE=todo
   api:
+    image: springapp
     depends_on:
     - db

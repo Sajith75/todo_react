@@ -9,7 +9,6 @@ services:
     - api
     - react
   react:
-    image: reactapp
     build: .
   db:
     image: mysql:5.7
